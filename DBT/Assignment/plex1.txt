@@ -1,0 +1,84 @@
+ /* Creating a table for exercise */
+ create table plTable(
+ val int,
+ str varchar(30)
+ );
+ 
+1. /*Write a program that computes the perimeter and the area of a rectangle. Define 
+your own values for the length and width. (Assuming that L and W are the length 
+and width of the rectangle, Perimeter = 2*(L+W) and Area = L*W.*/
+Ans.
+delimiter //
+create procedure areaOfRectangle(l int, b int)
+begin
+	declare x int default 0;
+	declare y int default 0;
+	set x = l*b;
+	insert into plTable values(x, 'is area of rec');
+	set y = 2*(l+b);
+	insert into plTable values(y, 'is perim of rec');
+end; //
+create procedure areaOfCircle(r int)
+begin
+	declare y int default 0;
+	set y = 3.14*r*r;
+	insert into plTable values(y, 'is area of cir');
+end; //
+delimiter ;
+
+call areaOfRectangle(2, 4);
+call areaOfCircle(3);
+select * from plTable;
+Output:
++------+-----------------+
+| val  | str             |
++------+-----------------+
+|    8 | is area of rec  |
+|   12 | is perim of rec |
+|   28 | is area of cir  |
++------+-----------------+
+
+2. /* Write a program that declares an integer variable called num, assigns a value to it, 
+and computes and inserts into the tempp table the value of the variable itself, its 
+square, and its cube. */
+Ans.
+delimiter //
+create procedure jkl(x int)
+begin
+	insert into q1 values(x,x*x,x*x*x);
+end;//
+
+select*from q1//
+delimiter ;
+Output:
++------+--------+------+
+| num  | square | cude |
++------+--------+------+
+|   15 |    225 | 3375 |
++------+--------+------+
+
+3. /* Convert a temperature in Fahrenheit (F) to its equivalent in Celsius (C) and vice 
+versa. The required formulae are:-  C= (F-32)*5/9    
+F= 9/5*C + 32 */
+Ans.
+delimiter //
+create procedure temperature2(x int, y int)
+begin
+	declare f int;
+	declare c int;
+	set f= 9/5*x + 32;
+	set c = (y-32)*5/9;
+	insert into temppl values(c, 'inCelsius');
+	insert into temppl values(f, 'inFahrenheit');
+end; //
+delimiter ;
+
+call temperature2(32, 40);
+select * from temppl;
+output:
++------+--------------+
+| fir  | sec          |
++------+--------------+
+|    4 | inCelsius    |
+|   90 | inFahrenheit |
++------+--------------+

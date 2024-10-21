@@ -1,0 +1,90 @@
+Here’s a detailed MySQL exam problem statement that covers a wide range of topics, including user management, table creation, data manipulation, querying, and advanced features:
+
+Problem Statement
+Context: You are tasked with developing a comprehensive database management system for a retail store. This system should manage products, customers, orders, and order items.
+
+Requirements
+1. User Management:
+	Create a MySQL user named retail_admin with a strong password.
+	Grant the user all privileges on a database named retail_store_db.
+	
+2. Table Creation:
+	Create the following tables with appropriate constraints:
+		Customers:
+			customer_id (Primary Key, INT, Auto Increment)
+			full_name (VARCHAR(100), NOT NULL)
+			email (VARCHAR(100), UNIQUE, NOT NULL)
+			phone_number (VARCHAR(15), NULL)
+			registration_date (DATE, NOT NULL)
+		Products:
+			product_id (Primary Key, INT, Auto Increment)
+			product_name (VARCHAR(100), NOT NULL)
+			price (DECIMAL(10, 2), CHECK (price > 0))
+			stock_quantity (INT, DEFAULT 0)
+		Orders:
+			order_id (Primary Key, INT, Auto Increment)
+			customer_id (Foreign Key referencing Customers.customer_id)
+			order_date (DATETIME, NOT NULL)
+			total_amount (DECIMAL(10, 2), NOT NULL)
+		Order_Items:
+			order_item_id (Primary Key, INT, Auto Increment)
+			order_id (Foreign Key referencing Orders.order_id)
+			product_id (Foreign Key referencing Products.product_id)
+			quantity (INT, CHECK (quantity > 0))
+			item_total (DECIMAL(10, 2), NOT NULL)
+			
+3. Populate Tables:
+	Insert at least five records into each table with realistic data.
+	
+4. Queries:
+	Write a query to retrieve all customers who have placed orders, along with their order details.
+	Write a query to find the total sales amount for each product using the HAVING clause.
+	Write a query to list customers ordered by their registration date.
+	Write a query to join the Customers, Orders, and Order_Items tables to show customer names and the products they ordered.
+	
+5. Data Manipulation:
+	Update a product's price in the Products table.
+	Delete a customer from the Customers table (ensure it cascades to Orders and Order_Items).
+	Alter the Products table to add a new column category (VARCHAR).
+	
+6. Advanced Queries:
+	Create a view named Customer_Order_Summary that displays the customer names along with their total number of orders.
+	Create an index on the email column of the Customers table to enhance performance.
+
+7. Stored Procedures and Functions:
+	Write a stored procedure named Add_Order that takes customer_id, product_id, and quantity as parameters, calculates the total amount, and inserts a new order.
+	Write a function named Get_Product_Stock that takes product_id as a parameter and returns the current stock quantity.
+
+8. Loops and Cursors:
+	Create a stored procedure that loops through all orders and prints the order IDs and total amounts using a cursor.
+
+9. Triggers:
+	Create a trigger that automatically updates the stock_quantity in the Products table whenever a new order item is added to the Order_Items table.
+
+10. Set Opertors:
+	Write a query that uses a set operator to find customers who have never placed an order compared to the list of all customers.
+	
+- Success Criteria
+	All tasks are completed without errors.
+	The database schema is correctly set up with all relationships and constraints.
+	Queries return expected results.
+	Procedures and functions operate as intended.
+	Triggers function correctly and update data as required.
+	
+This problem statement provides a comprehensive assessment of various MySQL concepts and operations, making it suitable for an exam setting.
+'
+--1
+create databse retail_store_db;
+create user retail_admin identified as 'student';
+grant all privileges on retail_store_db.* to retail_admin;
+flush privileges;
+--2
+create table customers(
+customer_id int primary key, auto increment,
+full_name varchar(100) not null,
+email varchar(100), unique not null,
+phone_number varchar(15) default null,
+registration_date date not null
+);
+
+create 

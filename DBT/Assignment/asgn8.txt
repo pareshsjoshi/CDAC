@@ -1,0 +1,5 @@
+1.
+select orders.onum, orders.snum, orders.amt*0.12 from orders;
+
+2.
+select * from customers

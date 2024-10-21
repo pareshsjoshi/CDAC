@@ -1,0 +1,22 @@
+delimiter //
+create function generate_random_number()
+returns int
+deterministic
+begin
+  declare random_number int;
+  set random_number = floor(rand() * 10) + 1;
+  return random_number;
+end//
+delimiter ;
+
+delimiter //
+create procedure generate_random_number()
+begin
+  declare random_number int;
+  set random_number = generate_random_number();
+  insert into pltable value(random_number, 'rndNo');
+end//
+delimiter ;
+
+call generate_random_number();
+select * from pltable;

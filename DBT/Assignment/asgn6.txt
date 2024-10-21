@@ -1,0 +1,22 @@
+1. 
+select * from orders
+where odate = '1990-10-03' or odate = '1990-10-04';
+
+select * from orders
+where odate between '1990-10-03' and '1990-10-04';
+
+2.
+select cname, sname from customers, salespeople
+where salespeople.snum = customers.snum;
+
+3.
+select * from customers
+where cname between 'A' and 'H';
+
+4.
+select * from customers
+where cname like 'C%';
+
+5.
+select * from orders
+where amt>0;

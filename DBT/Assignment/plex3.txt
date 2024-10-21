@@ -1,0 +1,33 @@
+4. /* A palindrome is a word that is spelled the same forward and backward, such as level, radar, etc. Write a program to Selects from any table a five letter word and determine whether it is a palindrome. */  
+
+mysql> delimiter //
+mysql> Create procedure checkPalindrome(x varchar(20))
+       Begin
+        if x = REVERSE(x) then
+              insert into tempp1 values(1,'Palindrome');
+        else
+              insert into tempp1 values(2,'Not Palindrome');
+        end if;
+     end;//
+
+mysql> delimiter ;
+mysql> call checkpalindrome('level');
+
+mysql> select*from tempp1;
++-------+------------+
+| First | Second     |
++-------+------------+
+|     1 | LY         |
+|     1 | Palindrome |
++-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> call checkpalindrome('ganesh');
+mysql> select*from tempp1;
++-------+----------------+
+| First | Second         |
++-------+----------------+
+|     1 | LY             |
+|     1 | Palindrome     |
+|     2 | Not Palindrome |
++-------+----------------+

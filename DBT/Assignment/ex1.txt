@@ -1,0 +1,61 @@
+1.
+create table SEMP
+(
+empno char(4),
+empname char(20),
+basic float,
+deptno char(2),
+depthead char(4)
+);
+
+2.
+create table SDEPT
+(
+deptno char(2),
+deptname char(15)
+);
+
+3.
+insert into sdept(deptno, deptname) values
+(10, 'Development'),
+(20, 'Training');
+
+4.
+insert into semp(empno, empname, basic, deptno, depthead) values
+(0001, 'SUNIL', 6000, 10, null),
+(0002, 'HIREN', 8000, 20, null),
+(0003, 'ALI', 4000, 10, 0001),
+(0004, 'GEORGE', 6000, null, 0002);
+
+5.
+create table supplier
+(
+`s#` varchar(3),
+sname varchar(20),
+status int,
+city varchar(10)
+);
+
+create table parts
+(
+`p#` varchar(3),
+pname varchar(20),
+color varchar(15),
+weight float,
+city varchar(10)
+);
+
+create table projects
+(
+`j#` varchar(3),
+jname varchar(20),
+city varchar(10)
+);
+
+create table supplier-parts-project
+(
+`s#` varchar(3),
+`p#` varchar(3),
+`j#` varchar(3),
+qty int
+);

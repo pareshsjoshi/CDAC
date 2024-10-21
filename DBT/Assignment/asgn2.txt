@@ -1,0 +1,11 @@
+1. Which field of the Customers table is the primary key?
+Ans. We haven't defined any field as Primary key, but by looking at data, cnum would be ideal field to define as Primary key.
+
+2. What is the 4th column of the Customers table? 
+Ans. "Rating" is the 4th column of table Customer.
+
+3. What is another word for row?, for column?
+Ans. Row is also called as Tuple and Column is also known as Key.
+
+4. Why isn’t it possible to see the first five rows of a table?
+Ans. Rows of table are scattered (fragmented) all over the database, they are not stored sequentially. As they are not stored sequentially, it is not possible to fetch them to see them in sequence. Hence it is not possible to see the first five rows of a table.

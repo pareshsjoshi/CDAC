@@ -1,0 +1,13 @@
+asgnUser
+student
+DB- student
+
+demoUser
+student
+DB- demodb
+
+amit
+student
+
+root
+cdac

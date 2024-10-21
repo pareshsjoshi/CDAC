@@ -1,0 +1,36 @@
+1) Write a query that will give you all orders for more than Rs. 1,000.   
+Ans.
+select * from orders
+where amt > 1000;
+
+2) Write a query that will give you the names and cities of all salespeople in London with a commission above .10. 
+Ans.
+select snum, city from salespeople
+where city = 'London' AND comm > 0.10;
+
+3) Write a query on the Customers table whose output will exclude all customers 
+with a rating <= 100, unless they are located in Rome.
+Ans. 
+select * from customers
+where rating <= 100 OR city = 'Rome';
+  
+4) What will be the output from the following query?   
+Select * from Orders      
+where (amt < 1000 OR    
+NOT (odate = '1990-10-03'    
+AND cnum > 2003));   
+Ans. 
+It'll show union of data where amount is less than 1000 and orders where date is not 1990-10-03 & cnum is less than or equal 2003.
+
+5) What will be the output of the following query?   
+Select * from Orders              
+where NOT ((odate = '1990-10-03' OR snum   
+>1006) AND amt >= 1500);   
+Ans. 
+It'll show orders ecluding orders placed on 1990-10-03 or sale num is greater than 1006 and ammont is less than 1500s
+
+6) What is a simpler way to write this query?   
+Select snum, sname, city, comm From Salespeople              
+where (comm > .12 OR comm <.14);   
+Ans.
+Select snum, sname, city, comm From Salespeople;

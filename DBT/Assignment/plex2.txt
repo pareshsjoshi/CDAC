@@ -1,0 +1,83 @@
+2. /* Select from any table three positive integers representing the sides of a triangle, and determine whether they form a valid triangle. Hint: In a triangle, the sum of any two sides must always be greater than the third side. */
+--Ans.
+delimiter //
+create procedure validTriangle1(a int, b int, c int)
+begin
+if (a + b > c) and (b + c > a) and ( a + c > b) then
+insert into temppl values(1,'valid triangle');
+else 
+insert into temppl values(0,'invalid trangle');
+end if;
+end; //
+delimiter ;
+
+Output:
+CALL validTriangle1(1, 2, 5);
+CALL validTriangle1(5, 5, 10);
+CALL validTriangle1(3, 4, 5);
+CALL validTriangle1(3, 5, 7);
+
+select * from temppl;
++------+-----------------+
+| fir  | sec             |
++------+-----------------+
+|    0 | invalid trangle |
+|    0 | invalid trangle |
+|    1 | valid triangle  |
+|    1 | valid triangle  |
++------+-----------------+
+
+3. /* Check if a given a year is a leap year. The condition is:- year should be (divisible by 4 and not divisible by 100) or (divisible by 4 and divisible by 400.). The year should be Selected from some table. */
+--Ans.
+delimiter //
+create table tempp1(
+	First int,
+	Second varchar(15)
+)//
+
+create procedure YEAR1()
+begin
+	declare year INT default 2008;
+	if (year % 4 = 0 and year % 100 != 0) or (year % 400 = 0) then
+		insert into tempp1 values(1,'LY');
+	else
+		insert into tempp1 values(1,'NLY');
+	end if;
+end; //
+
+call YEAR1()//
+select*from tempp1//
+delimiter ;
+Output:
++-------+--------+
+| First | Second |
++-------+--------+
+|     1 | LY     |
++-------+--------+
+
+4. /* Write a program that Selects from any table two character strings. Your program should then determine if one character string exists inside another character string. */
+--Ans.
+delimiter //
+create procedure isChildStr(str1 varchar(25), str2 varchar(25))
+begin
+	declare comp varchar(25);
+	set comp = concat('%', str2, '%');
+	if str1 like comp then
+		insert into pltable value(1, 'is child str');
+	else
+		insert into pltable value(0, 'isn\'t child str');
+	end if;
+end; //
+delimiter ;
+
+truncate pltable;
+call ischildstr('mysql', 'sql');
+call ischildstr('ex for', 'not child');
+select * from pltable;
+Output:
++------+-----------------+
+| val  | str             |
++------+-----------------+
+|    1 | is child str    |
+|    0 | isn't child str |
++------+-----------------+
